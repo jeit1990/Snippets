@@ -14,7 +14,7 @@
 
         <div class="row">
             <div class="col">
-                <form action="{% url 'add_snippet' %}" method="post">
+                <form action="{% url 'snippet-edit' snippet.id %}" method="post">
                    {% csrf_token %}
 
                        {{ form.as_p }}

@@ -28,6 +28,7 @@
                         <th scope="col">Название</th>
                         <th scope="col">Язык</th>
                         <th scope="col">Дата создания</th>
+                        <th scope="col">Действия</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -38,6 +39,10 @@
                             <td><a href="{% url 'snippet-detail' snippet.id %}">{{snippet.name}}</a></td>
                             <td>{{ snippet.lang }}</td>
                             <td>{{ snippet.creation_date|date:"d.m.Y H:i" }}</td>
+                            <td>
+                                <a href="{% url 'snippet-delete' snippet.id %}">del</a> /
+                                <a href="{% url 'snippet-edit' snippet.id %}">edit</a>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
