@@ -52,9 +52,6 @@ def snippet_delete(request, snippet_id):
         return render(request, 'pages/error.html', context | {'error': f'not found {snippet_id}'},)
 
     if request.method == "POST":
-
-        snippet = Snippet.objects.get(id=snippet_id)
-
         snippet.delete()
         return redirect("snippets_list")
     return render(request, 'pages/del_snippet.html', context)
@@ -69,11 +66,12 @@ def snippet_edit(request, snippet_id):
         return render(request, 'pages/error.html', context | {'error': f'not found {snippet_id}'},)
     if request.method == "GET":
         form = SnippetForm(instance=snippet)
-        context = context = context | {'form': form }
+        context = context | {'form': form }
         return render(request, 'pages/edit_snippet.html', context)
     if request.method == "POST":
-        form = SnippetForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("snippets_list")
-        return render(request,'pages/edit_snippet.html',{'form': form})
+        snippet.name = request.POST['name']
+        snippet.code = request.POST['code']
+        snippet.lang = request.POST['lang']
+        snippet.save()
+        return redirect("snippets_list")
+        #return render(request,'pages/edit_snippet.html',{'form': form})
