@@ -19,9 +19,11 @@ def snippets_page(request):
 
 
 def get_snippet(request, snippet_id):
+    context = {'pagename': 'Просмотр сниппета'}
     try:
         snippet = Snippet.objects.get(id=snippet_id)
     except:
-        snippet = False
-    context = {'pagename': 'Просмотр сниппетов', 'snippet': snippet}
-    return render(request, 'pages/snippet.html', context)
+        return render(request, 'pages/error.html', context | {'error': f'not found {snippet_id}'},)
+    else:
+        context = context | {'snippet': snippet}
+        return render(request, 'pages/snippet.html', context)
