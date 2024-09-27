@@ -4,3 +4,6 @@
 __pycache__/
 *.pyc
 db.*
+*.sqllite
+*.sqllite3
+staticfiles/

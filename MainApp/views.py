@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from MainApp.models import Snippet
-from MainApp.forms import SnippetForm
+from MainApp.forms import SnippetForm, UserRegistrationForm
 from django.contrib import auth
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
@@ -136,3 +136,16 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return  redirect('home')
+
+
+def create_user(request):
+    context = {"pagename": "Регистрация"}
+    if request.method == "GET":
+        form = UserRegistrationForm()
+    if request.method == "POST":
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    context["form"] = form
+    return render(request, 'pages/registration.html', context)
