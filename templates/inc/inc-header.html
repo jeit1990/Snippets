@@ -12,18 +12,53 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
+                    {% if request.user.is_authenticated %}
                     <li class="form-inline">
                         <a class="btn btn-outline-secondary" href="{% url 'add_snippet' %}">
                             Добавить сниппет
                         </a>
                     </li>
+                    {% endif %}
                     <li class="form-inline">
                         <a class="btn btn-outline-info" href="{% url 'snippets_list' %}">
                             Посмотреть сниппеты
                         </a>
                     </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="form-inline">
+                        <a class="btn btn-outline-secondary" href="{% url 'snippets_list_user' request.user.username %}">
+                            Мои сниппеты
+                        </a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
-        </div>
+            {% if request.user.is_authenticated %}
+                <span style="color: white;">Welcome, {{request.user.username }}
+                <a href="{% url 'logout' %}">logout</a>
+            {% else %}
+<div class="navbar-nav mr-right nav-item dropdown dropdown-menu-right">
+   <a class="btn btn-outline-primary my-2 my-sm-0 dropdown-toggle" href="#" id="navbarDropdown"
+      role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Авторизация</a>
+   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+       <form class="w-100 px-4 py-3" action="{% url 'login' %}" method="post">
+           {% csrf_token %}
+           <div class="form-group form-inline">
+               <input name="username" type="text" class="form-control" placeholder="Username" required>
+           </div>
+           <div class="form-group form-inline">
+               <input name="password" type="password" class="form-control" placeholder="password"  required>
+           </div>
+           <button type="submit" class="btn btn-primary btn-block">Войти</button>
+       </form>
+       <div class="dropdown-divider"></div>
+   </div>
+</div>
+                {% if errors %}
+                    <li style="color: red;">{{ errors }}</li>
+                    {% endif %}
+            {% endif %}
+
+        </div>  </div>
     </nav>
 </header>

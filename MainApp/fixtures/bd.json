@@ -1,22 +1,14 @@
 [
 {
     "model": "MainApp.snippet",
-    "pk": 1,
-    "fields": {
-        "name": "Hello world Snippet",
-        "lang": "",
-        "code": "print(\"Hello world\")",
-        "creation_date": "2024-09-26T08:24:40.174Z"
-    }
-},
-{
-    "model": "MainApp.snippet",
     "pk": 2,
     "fields": {
         "name": "Hello world Snippet2",
         "lang": "py",
         "code": "print(\"Hello world\")",
-        "creation_date": "2024-09-26T09:14:56.896Z"
+        "creation_date": "2024-09-26T09:14:56.896Z",
+        "user": null,
+        "public_snippet": true
     }
 },
 {
@@ -26,7 +18,105 @@
         "name": "Hello world Snippet3",
         "lang": "py",
         "code": "print(\"Hello world3\")",
-        "creation_date": "2024-09-26T09:15:19.480Z"
+        "creation_date": "2024-09-26T09:15:19.480Z",
+        "user": null,
+        "public_snippet": true
+    }
+},
+{
+    "model": "MainApp.snippet",
+    "pk": 4,
+    "fields": {
+        "name": "py snip",
+        "lang": "py",
+        "code": "test",
+        "creation_date": "2024-09-26T11:31:23.136Z",
+        "user": null,
+        "public_snippet": true
+    }
+},
+{
+    "model": "MainApp.snippet",
+    "pk": 7,
+    "fields": {
+        "name": "user",
+        "lang": "py",
+        "code": "request.user",
+        "creation_date": "2024-09-27T08:11:55.168Z",
+        "user": 3,
+        "public_snippet": true
+    }
+},
+{
+    "model": "MainApp.snippet",
+    "pk": 8,
+    "fields": {
+        "name": "admin",
+        "lang": "js",
+        "code": "werwe",
+        "creation_date": "2024-09-27T08:18:13.674Z",
+        "user": 1,
+        "public_snippet": true
+    }
+},
+{
+    "model": "MainApp.snippet",
+    "pk": 9,
+    "fields": {
+        "name": "test public",
+        "lang": "py",
+        "code": "232",
+        "creation_date": "2024-09-27T09:17:57.066Z",
+        "user": 3,
+        "public_snippet": true
+    }
+},
+{
+    "model": "MainApp.snippet",
+    "pk": 10,
+    "fields": {
+        "name": "test privat",
+        "lang": "py",
+        "code": "wer",
+        "creation_date": "2024-09-27T09:18:53.465Z",
+        "user": 3,
+        "public_snippet": false
+    }
+},
+{
+    "model": "MainApp.snippet",
+    "pk": 11,
+    "fields": {
+        "name": "priv 2",
+        "lang": "cpp",
+        "code": "werwe",
+        "creation_date": "2024-09-27T09:19:44.598Z",
+        "user": 3,
+        "public_snippet": true
+    }
+},
+{
+    "model": "MainApp.snippet",
+    "pk": 12,
+    "fields": {
+        "name": "werwe",
+        "lang": "js",
+        "code": "werwer",
+        "creation_date": "2024-09-27T09:23:49.244Z",
+        "user": 3,
+        "public_snippet": false
+    }
+},
+{
+    "model": "MainApp.snippet",
+    "pk": 13,
+    "fields": {
+        "name": "wer",
+        "lang": "py",
+        "code": "werwer",
+        "creation_date": "2024-09-27T09:26:35.290Z",
+        "user": 3,
+        "public_snippet": false
     }
 }
 ]

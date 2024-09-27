@@ -28,6 +28,7 @@
                         <th scope="col">Название</th>
                         <th scope="col">Язык</th>
                         <th scope="col">Дата создания</th>
+                        <th scope="col">user</th>
                         <th scope="col">Действия</th>
                     </tr>
                     </thead>
@@ -39,16 +40,26 @@
                             <td><a href="{% url 'snippet-detail' snippet.id %}">{{snippet.name}}</a></td>
                             <td>{{ snippet.lang }}</td>
                             <td>{{ snippet.creation_date|date:"d.m.Y H:i" }}</td>
+                            <td>{{ snippet.user }}</td>
+                            {% if request.user.is_authenticated and request.user == snippet.user %}
                             <td>
                                 <a href="{% url 'snippet-delete' snippet.id %}">del</a> /
-                                <a href="{% url 'snippet-edit' snippet.id %}">edit</a>
+                                <a href="{% url 'snippet-edit' snippet.id %}">edit</a> /
+                                <a href="{% url 'snippet-edit' snippet.id %}">
+                                    <i style="color: red;" class="fas fa-edit"></i>
+                                </a> /
+                                <a href="{% url 'snippet-delete' snippet.id %}">
+                                    <i style="color: red;" class="fas fa-trash"></i>
+                                </a>
+
                             </td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
                 <div align="right">
-                    <i style="color: gray;">Всего сниппетов: {{2}}</i>
+                    <i style="color: gray;">Всего сниппетов: {{ snippets.count }}</i>
                 </div>
             </div>
         </div>
