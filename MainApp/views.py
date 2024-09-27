@@ -91,16 +91,21 @@ def snippet_edit(request, snippet_id):
             setattr(snippet, key, value)
         """print(request.POST)
         print(hasattr(request.POST, "public_snippet"))"""
-        try:
+        """try:
             data["public_snippet"]
             snippet.public_snippet = True
         except:
+            snippet.public_snippet = False"""
+        if data.get("public_snippet") is None:
             snippet.public_snippet = False
+        else:
+            snippet.public_snippet = True
         snippet.save()
         return redirect("snippets_list")
         #return render(request,'pages/edit_snippet.html',{'form': form})
 
 
+@login_required
 def snippet_delete(request, snippet_id):
     if request.method == "GET" or request.method == "POST":
         snippet = get_object_or_404(Snippet, id=snippet_id)
